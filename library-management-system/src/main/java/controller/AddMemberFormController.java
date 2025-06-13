@@ -71,8 +71,11 @@ public class AddMemberFormController implements Initializable {
         }else if(!isValidNic()){
             showAlert(Alert.AlertType.ERROR, "Please enter valid NIC");
             return;
-        }else if (!isValidContactNumber()){
+        }else if (!isValidContactNumber()) {
             showAlert(Alert.AlertType.ERROR, "Please enter valid contact number");
+            return;
+        }else if(isExists()){
+            showAlert(Alert.AlertType.ERROR, "This member already exists in the system!");
             return;
         }else{
             MemberDTO member = new MemberDTO();
@@ -87,14 +90,14 @@ public class AddMemberFormController implements Initializable {
 
 
             try {
-               Boolean isadded = memberService.addMember(member);
+                Boolean isadded = memberService.addMember(member);
                 if(isadded){
                     showAlert(Alert.AlertType.INFORMATION, "Member Added Successfully!");
                     clearTextFields();
 
                     lblMembershipId.setText(String.valueOf(memberService.generateMemberId()));
                 }else{
-                    showAlert(Alert.AlertType.ERROR, "This member already exists in the system!");
+                    showAlert(Alert.AlertType.ERROR, "Member adding failled! Please try again");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -155,6 +158,16 @@ public class AddMemberFormController implements Initializable {
         Alert alert = new Alert(alertType);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    //------------------------checking member already exists---------------------------------
+
+    private Boolean isExists(){
+        try {
+            return memberService.isMemberRegistered(txtNic.getText());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

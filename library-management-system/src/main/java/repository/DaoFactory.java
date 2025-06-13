@@ -1,6 +1,8 @@
 package repository;
 
+import repository.custom.impl.BookRepositoryImpl;
 import repository.custom.impl.MemberRepositoryImpl;
+import service.custom.impl.BookServiceImpl;
 import service.custom.impl.MemberServiceImpl;
 import util.RepositoryType;
 
@@ -17,6 +19,7 @@ public class DaoFactory {
     public <T extends SuperRepository> T getRepositoryType(RepositoryType type){
         switch (type){
             case MEMBER: return (T) new MemberRepositoryImpl();
+            case BOOK: return (T) new BookRepositoryImpl();
         }
         return null;
     }

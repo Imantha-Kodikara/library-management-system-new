@@ -33,7 +33,7 @@ public class DashboardFormController {
 
     @FXML
     void btnAddBookOnClick(ActionEvent event) {
-
+        loadWindow("/view/add_book_form_view.fxml");
     }
 
     @FXML
