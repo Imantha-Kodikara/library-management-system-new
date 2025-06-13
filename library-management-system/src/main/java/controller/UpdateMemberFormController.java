@@ -1,31 +1,30 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.dto.MemberDTO;
 import service.ServiceFactory;
 import service.custom.MemberService;
 import util.ServiceType;
 
+import javax.sound.midi.Soundbank;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddMemberFormController implements Initializable {
+public class UpdateMemberFormController implements Initializable {
+
+    @FXML
+    private JFXButton btnUpdateMember;
 
     @FXML
     private DatePicker dateOfMembership;
-
-    @FXML
-    private Label lblMembershipId;
 
     @FXML
     private JFXTextField txtAddress;
@@ -43,25 +42,49 @@ public class AddMemberFormController implements Initializable {
     private JFXTextField txtLastName;
 
     @FXML
-    private JFXTextField txtNic;
+    private TextField txtMembershipId;
 
+    @FXML
+    private JFXTextField txtNic;
 
     MemberService memberService = ServiceFactory.getInstance().getServiceType(ServiceType.MEMBER); //creating reference from member service(De-coupling)
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnUpdateMember.setDisable(true);
+    }
+
+    @FXML
+    void btnSearchMemberOnClick(ActionEvent event) {
+
         try {
-            String membershipId = String.valueOf(memberService.generateMemberId());
-            lblMembershipId.setText(membershipId);
-        } catch (SQLException e) {
+            MemberDTO member = memberService.searchById(Integer.valueOf(txtMembershipId.getText()));
+            if(member == null){
+                showAlert(Alert.AlertType.ERROR, "Member not found!");
+                txtMembershipId.setText("");
+            }else{
+                //------------------------Setting member attributes values to the text fields-------------------------
+
+                txtFirstName.setText(member.getFirstName());
+                txtLastName.setText(member.getLastName());
+                txtAddress.setText(member.getAddress());
+                txtEmail.setText(member.getEmail());
+                txtContactNumber.setText(member.getContactNumber());
+                txtNic.setText(member.getNic());
+                dateOfMembership.setValue(member.getMembershipDate());
+
+                btnUpdateMember.setDisable(false); //enable btnUpdate
+            }
+        } catch (NumberFormatException ex){
+            showAlert(Alert.AlertType.ERROR, "Please enter valid numeric membership ID");
+            txtMembershipId.setText("");
+        }catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    void btnAddMemberOnClick(ActionEvent event) {
+    void btnUpdateMemberOnClick(ActionEvent event) {
         if(!isFilled()){
             showAlert(Alert.AlertType.ERROR, "Please fill all the fields");
             return;
@@ -74,37 +97,33 @@ public class AddMemberFormController implements Initializable {
         }else if (!isValidContactNumber()){
             showAlert(Alert.AlertType.ERROR, "Please enter valid contact number");
             return;
-        }else{
-            MemberDTO member = new MemberDTO();
+        }else {
+            MemberDTO updatedMember= new MemberDTO();
 
-            member.setFirstName(txtFirstName.getText());
-            member.setLastName(txtLastName.getText());
-            member.setAddress(txtAddress.getText());
-            member.setEmail(txtEmail.getText());
-            member.setContactNumber(txtContactNumber.getText());
-            member.setNic(txtNic.getText());
-            member.setMembershipDate(dateOfMembership.getValue());
-
+            updatedMember.setId(Integer.valueOf(txtMembershipId.getText()));
+            updatedMember.setFirstName(txtFirstName.getText());
+            updatedMember.setLastName(txtLastName.getText());
+            updatedMember.setAddress(txtAddress.getText());
+            updatedMember.setEmail(txtEmail.getText());
+            updatedMember.setContactNumber(txtContactNumber.getText());
+            updatedMember.setNic(txtNic.getText());
+            updatedMember.setMembershipDate(dateOfMembership.getValue());
 
             try {
-               Boolean isadded = memberService.addMember(member);
-                if(isadded){
-                    showAlert(Alert.AlertType.INFORMATION, "Member Added Successfully!");
-                    clearTextFields();
+                Boolean isupdated = memberService.update(updatedMember);
 
-                    lblMembershipId.setText(String.valueOf(memberService.generateMemberId()));
+                if(isupdated){
+                    showAlert(Alert.AlertType.INFORMATION, "Member Updated successfully!");
+                    clearTextFields();
+                    btnUpdateMember.setDisable(true);
                 }else{
-                    showAlert(Alert.AlertType.ERROR, "This member already exists in the system!");
+                    showAlert(Alert.AlertType.ERROR, "Member Update failed! Please try again");
+                    clearTextFields();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    @FXML
-    void btnClearFormOnClick(ActionEvent event) {
-        clearTextFields();
     }
 
     //-----------------------------------------------Validations--------------------------------------------------------------
@@ -138,16 +157,6 @@ public class AddMemberFormController implements Initializable {
                 txtNic.getText().chars().allMatch(Character::isDigit); //checking all the character are digits
     }
 
-    //-----------------------------------------clear textfields------------------------------------------------------
-
-    private void clearTextFields(){
-        txtFirstName.setText("");
-        txtLastName.setText("");
-        txtAddress.setText("");
-        txtEmail.setText("");
-        txtNic.setText("");
-        txtContactNumber.setText("");
-    }
 
     //--------------------------------Method for tigger alerts---------------------------------
 
@@ -156,6 +165,19 @@ public class AddMemberFormController implements Initializable {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    //-----------------------------Clearing all the text fields------------------------------
+    private void clearTextFields(){
+        txtMembershipId.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtAddress.setText("");
+        txtEmail.setText("");
+        txtNic.setText("");
+        txtContactNumber.setText("");
+        dateOfMembership.setValue(null);
+    }
+
 
 
 }

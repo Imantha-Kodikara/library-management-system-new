@@ -78,7 +78,7 @@ public class DashboardFormController {
 
     @FXML
     void btnUpdateMemberOnClick(ActionEvent event) {
-
+        loadWindow("/view/update_member_form_view.fxml");
     }
 
 
@@ -91,5 +91,4 @@ public class DashboardFormController {
             throw new RuntimeException(e);
         }
     }
-
 }
