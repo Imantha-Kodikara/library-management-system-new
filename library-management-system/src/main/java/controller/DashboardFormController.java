@@ -68,7 +68,7 @@ public class DashboardFormController {
 
     @FXML
     void btnSearchMemberOnClick(ActionEvent event) {
-
+        loadWindow("/view/search_member_form_view.fxml");
     }
 
     @FXML

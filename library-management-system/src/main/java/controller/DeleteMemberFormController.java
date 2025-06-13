@@ -68,7 +68,7 @@ public class DeleteMemberFormController implements Initializable {
             MemberDTO member = memberService.searchById(Integer.valueOf(txtMembershipId.getText()));
             if(member == null){
                 showAlert(Alert.AlertType.ERROR, "Member not found!");
-                txtMembershipId.setText("");
+                clearTextFields();
             }else{
                 //------------------------Setting member attributes values to the text fields-------------------------
 
@@ -84,7 +84,7 @@ public class DeleteMemberFormController implements Initializable {
             }
         } catch (NumberFormatException ex){
             showAlert(Alert.AlertType.ERROR, "Please enter valid numeric membership ID");
-            txtMembershipId.setText("");
+            clearTextFields();
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
