@@ -1,6 +1,7 @@
 package repository.custom.impl;
 
 import model.entity.BookEntity;
+import repository.CrudRepository;
 import repository.custom.BookRepository;
 import util.CrudUtil;
 
@@ -11,7 +12,9 @@ import java.util.List;
 public class BookRepositoryImpl implements BookRepository {
     @Override
     public Boolean add(BookEntity entity) throws SQLException {
-        return null;
+        return CrudUtil.execute("INSERT INTO books (book_title, author, isbn, category, no_of_copies) VALUES(?, ?, ?, ?, ?)",
+                entity.getTitle(), entity.getAuthor(), entity.getIsbn(), entity.getCategory(), entity.getNoOfCopies()
+                );
     }
 
     @Override
@@ -43,5 +46,11 @@ public class BookRepositoryImpl implements BookRepository {
             int maxId = resultSet.getInt(1);
             return maxId + 1;
         }
+    }
+
+    @Override
+    public Boolean isBookRegistered(String isbn) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM books WHERE isbn = ?", isbn); //If found already registered book isbn, return true
+        return resultSet.next();
     }
 }

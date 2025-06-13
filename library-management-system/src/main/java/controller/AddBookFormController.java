@@ -70,6 +70,8 @@ public class AddBookFormController implements Initializable {
             showAlert(Alert.AlertType.ERROR, "Please enter valid ISBN number");
         }else if(!isValidNoOfCopies()){
             showAlert(Alert.AlertType.ERROR, "Please enter valid number of copies");
+        }else if(isExists()){
+            showAlert(Alert.AlertType.ERROR, "This book already exists in the database");
         }else{
             BookDTO book = new BookDTO();
 
@@ -79,13 +81,18 @@ public class AddBookFormController implements Initializable {
             book.setCategory(cmbBookCategory.getValue());
             book.setNoOfCopies(Integer.valueOf(txtNoOfCopies.getText()));
 
-            Boolean isAdded = bookService.addBook(book);
+            try {
+                Boolean isAdded = bookService.addBook(book);
 
-            if(isAdded){
-                showAlert(Alert.AlertType.INFORMATION, "Book Added Successfully!");
-                clearFields();
-            }else{
-                showAlert(Alert.AlertType.ERROR, "Book Ading Failed! Please Try again");
+                if(isAdded){
+                    showAlert(Alert.AlertType.INFORMATION, "Book Added Successfully!");
+                    clearFields();
+                    lblBookId.setText(String.valueOf(bookService.generateBookId()));
+                }else{
+                    showAlert(Alert.AlertType.ERROR, "Book Ading Failed! Please Try again");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -146,5 +153,15 @@ public class AddBookFormController implements Initializable {
         txtIsbn.setText("");
         cmbBookCategory.setValue("");
         txtNoOfCopies.setText("");
+    }
+
+    //-------------------------------Check book already exists---------------------------
+
+    private Boolean isExists(){
+        try {
+            return bookService.isBookRegistered(txtIsbn.getText());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
