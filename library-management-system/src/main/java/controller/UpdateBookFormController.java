@@ -4,12 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.dto.BookDTO;
 import service.ServiceFactory;
 import service.custom.BookService;
@@ -19,16 +18,13 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddBookFormController implements Initializable {
+public class UpdateBookFormController implements Initializable {
 
     @FXML
-    private JFXButton btnAddBook;
+    private JFXButton btnUpdateBook;
 
     @FXML
     private JFXComboBox<String> cmbBookCategory;
-
-    @FXML
-    private Label lblBookId;
 
     @FXML
     private JFXTextField txtAuthor;
@@ -37,13 +33,15 @@ public class AddBookFormController implements Initializable {
     private JFXTextField txtBookTitle;
 
     @FXML
-    private JFXTextField txtIsbn;
+    private JFXTextField txtBookId;
+
+    @FXML
+    private TextField txtIsbn;
 
     @FXML
     private JFXTextField txtNoOfCopies;
 
     BookService bookService = ServiceFactory.getInstance().getServiceType(ServiceType.BOOK);
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbBookCategory.setItems(FXCollections.observableArrayList("Fiction", "Non-Fiction", "Science", "Technology", "Biography",
@@ -53,28 +51,42 @@ public class AddBookFormController implements Initializable {
                 "Cybersecurity", "Software Engineering", "Artificial Intelligence",
                 "Mobile Development", "Game Development", "DevOps")); //setting the values of combo box
 
+        btnUpdateBook.setDisable(true);
+        txtBookId.setEditable(false);
+    }
+
+    @FXML
+    void btnSearchBookOnClick(ActionEvent event) {
         try {
-            lblBookId.setText(String.valueOf(bookService.generateBookId())); //Generating new member id when user open add book window
+            BookDTO book = bookService.searchByIsbn(txtIsbn.getText());
+
+            if(book != null){
+                txtBookId.setText(String.valueOf(book.getId()));
+                txtBookTitle.setText(book.getTitle());
+                txtAuthor.setText(book.getAuthor());
+                cmbBookCategory.setValue(book.getCategory());
+                txtNoOfCopies.setText(String.valueOf(book.getNoOfCopies()));
+
+                btnUpdateBook.setDisable(false);
+            }else{
+                showAlert(Alert.AlertType.ERROR, "Book Not Found in the database!");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    void btnAddBookOnClick(ActionEvent event) {
+    void btnUpdateBookOnClick(ActionEvent event) {
         if(!isFilled()){
             showAlert(Alert.AlertType.ERROR, "Please fill all the fields");
         }else if (!isValidAuthor()){
             showAlert(Alert.AlertType.ERROR, "Please enter valid author name");
-        }else if(!isValidIsbn()){
-            showAlert(Alert.AlertType.ERROR, "Please enter valid ISBN number");
         }else if(!isValidNoOfCopies()){
             showAlert(Alert.AlertType.ERROR, "Please enter valid number of copies");
-        }else if(isExists()){
-            showAlert(Alert.AlertType.ERROR, "This book already exists in the database");
         }else{
             BookDTO book = new BookDTO();
-
+            book.setId(Integer.valueOf(txtBookId.getText()));
             book.setTitle(txtBookTitle.getText());
             book.setAuthor(txtAuthor.getText());
             book.setIsbn(txtIsbn.getText());
@@ -82,24 +94,28 @@ public class AddBookFormController implements Initializable {
             book.setNoOfCopies(Integer.valueOf(txtNoOfCopies.getText()));
 
             try {
-                Boolean isAdded = bookService.addBook(book);
+                Boolean isUpdated = bookService.update(book);
 
-                if(isAdded){
-                    showAlert(Alert.AlertType.INFORMATION, "Book Added Successfully!");
+                if(isUpdated){
+                    showAlert(Alert.AlertType.INFORMATION, "Book Updated Successfully!");
                     clearFields();
-                    lblBookId.setText(String.valueOf(bookService.generateBookId()));
+
                 }else{
-                    showAlert(Alert.AlertType.ERROR, "Book Ading Failed! Please Try again");
+                    showAlert(Alert.AlertType.ERROR, "Book Updated Failed! Please Try again");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
+
     }
 
-    @FXML
-    void btnClearFormOnClick(ActionEvent event) {
-        clearFields();
+    //--------------------------------Method for tigger alerts---------------------------------
+
+    private void showAlert(Alert.AlertType alertType, String content){
+        Alert alert = new Alert(alertType);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     //---------------------------Validations----------------------------------------------
@@ -108,7 +124,7 @@ public class AddBookFormController implements Initializable {
 
     Boolean isFilled(){
         return !txtBookTitle.getText().isEmpty() && !txtAuthor.getText().isEmpty() &&
-                !txtIsbn.getText().isEmpty() && cmbBookCategory.getValue() != null &&
+                cmbBookCategory.getValue() != null &&
                 !txtNoOfCopies.getText().isEmpty();
     }
 
@@ -118,13 +134,6 @@ public class AddBookFormController implements Initializable {
         return !txtAuthor.getText().matches(".*\\d.*"); //regex that matches any digit anywhere in the string
     }
 
-    //checking ISBN is valid
-
-    Boolean isValidIsbn(){
-        return txtIsbn.getText().matches("^[0-9-]+$");
-        //^ and $ representing start and end of the string
-        //[0-9-]+ representing only digits(0-9) and hyphens(-) allowed one or more times. No letters allowed
-    }
 
     //Checking no of copies are valid
 
@@ -137,24 +146,6 @@ public class AddBookFormController implements Initializable {
         }
     }
 
-    //--------------------------------Method for tigger alerts---------------------------------
-
-    private void showAlert(Alert.AlertType alertType, String content){
-        Alert alert = new Alert(alertType);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
-    //------------------------------------Clear fields method------------------------------------
-
-    private void clearFields(){
-        txtBookTitle.setText("");
-        txtAuthor.setText("");
-        txtIsbn.setText("");
-        cmbBookCategory.setValue("");
-        txtNoOfCopies.setText("");
-    }
-
     //-------------------------------Check book already exists---------------------------
 
     private Boolean isExists(){
@@ -164,4 +155,17 @@ public class AddBookFormController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    //------------------------------------Clear fields method------------------------------------
+
+    private void clearFields(){
+        txtBookId.setText("");
+        txtBookTitle.setText("");
+        txtAuthor.setText("");
+        txtIsbn.setText("");
+        cmbBookCategory.setValue("");
+        txtNoOfCopies.setText("");
+    }
+
+
 }

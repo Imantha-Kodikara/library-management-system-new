@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="379.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateBookFormController">
+   <children>
+      <Label layoutX="333.0" layoutY="42.0" text="Update Book" underline="true">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtBookTitle" layoutX="242.0" layoutY="161.0" prefHeight="26.0" prefWidth="414.0" promptText="Book Title" />
+      <JFXTextField fx:id="txtAuthor" layoutX="242.0" layoutY="188.0" prefHeight="26.0" prefWidth="414.0" promptText="Author" />
+      <JFXTextField fx:id="txtNoOfCopies" layoutX="242.0" layoutY="244.0" prefHeight="26.0" prefWidth="110.0" promptText="No of Copies" />
+      <JFXButton fx:id="btnUpdateBook" layoutX="570.0" layoutY="293.0" onAction="#btnUpdateBookOnClick" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #1e3346;" text="Update Book" textFill="WHITE" />
+      <JFXComboBox fx:id="cmbBookCategory" layoutX="242.0" layoutY="216.0" prefHeight="26.0" prefWidth="215.0" promptText="Category" />
+      <TextField fx:id="txtIsbn" layoutX="242.0" layoutY="100.0" prefHeight="26.0" prefWidth="274.0" promptText="Enter Book ISBN " />
+      <JFXButton layoutX="561.0" layoutY="100.0" onAction="#btnSearchBookOnClick" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: green;" text="Search Book" textFill="WHITE" />
+      <JFXTextField fx:id="txtBookId" layoutX="242.0" layoutY="135.0" prefHeight="26.0" prefWidth="143.0" promptText="Book ID" />
+   </children>
+</AnchorPane>

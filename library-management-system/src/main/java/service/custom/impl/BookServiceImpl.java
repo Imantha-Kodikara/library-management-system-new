@@ -28,4 +28,25 @@ public class BookServiceImpl implements BookService {
     public Boolean isBookRegistered(String isbn) throws SQLException {
         return bookRepository.isBookRegistered(isbn);
     }
+
+    @Override
+    public BookDTO searchByIsbn(String isbn) throws SQLException {
+        BookEntity entity = bookRepository.searchByIsbn(isbn);
+
+        if(entity != null){
+            ModelMapper mapper = new ModelMapper();
+            BookDTO book = mapper.map(entity, BookDTO.class);
+            return book;
+        }else{
+            return null;
+        }
+
+    }
+
+    @Override
+    public Boolean update(BookDTO book) throws SQLException {
+        ModelMapper mapper = new ModelMapper();
+        BookEntity entity = mapper.map(book, BookEntity.class);
+       return bookRepository.update(entity);
+    }
 }

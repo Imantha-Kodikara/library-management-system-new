@@ -1,5 +1,6 @@
 package repository.custom.impl;
 
+import com.sun.source.tree.BreakTree;
 import model.entity.BookEntity;
 import repository.CrudRepository;
 import repository.custom.BookRepository;
@@ -19,7 +20,9 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Boolean update(BookEntity entity) throws SQLException {
-        return null;
+        return CrudUtil.execute("UPDATE books SET book_title = ?, author = ?,  category = ?, no_of_copies = ? WHERE isbn = ?",
+                entity.getTitle(), entity.getAuthor(),  entity.getCategory(), entity.getNoOfCopies(), entity.getIsbn()
+                );
     }
 
     @Override
@@ -52,5 +55,21 @@ public class BookRepositoryImpl implements BookRepository {
     public Boolean isBookRegistered(String isbn) throws SQLException {
         ResultSet resultSet = CrudUtil.execute("SELECT * FROM books WHERE isbn = ?", isbn); //If found already registered book isbn, return true
         return resultSet.next();
+    }
+
+    @Override
+    public BookEntity searchByIsbn(String isbn) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM books WHERE isbn = ?", isbn);
+        if(resultSet.next()){
+            return new BookEntity(
+                    resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getInt(6)
+            );
+        }
+        return null;
     }
 }
