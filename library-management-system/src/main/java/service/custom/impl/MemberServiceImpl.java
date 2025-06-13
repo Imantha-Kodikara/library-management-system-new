@@ -49,4 +49,9 @@ public class MemberServiceImpl implements MemberService {
         MemberEntity entity = mapper.map(member, MemberEntity.class);
         return memberRepository.update(entity);
     }
+
+    @Override
+    public Boolean deleteById(Integer id) throws SQLException {
+       return memberRepository.deleteById(id);
+    }
 }

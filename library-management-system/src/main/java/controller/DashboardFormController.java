@@ -48,7 +48,7 @@ public class DashboardFormController {
 
     @FXML
     void btnDeleteMemberOnClick(ActionEvent event) {
-
+        loadWindow("/view/delete_member_form_view.fxml");
     }
 
     @FXML

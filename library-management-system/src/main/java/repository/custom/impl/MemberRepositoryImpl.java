@@ -25,8 +25,8 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
-    public Boolean deleteById(Integer id) {
-        return null;
+    public Boolean deleteById(Integer id) throws SQLException {
+        return CrudUtil.execute("DELETE FROM members WHERE id = ?", id);
     }
 
     @Override
@@ -54,14 +54,13 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @Override
     public Integer getNextId() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT * FROM members");
-        if(!resultSet.next()) return 1;
-
-        Integer id = 0;
-        while (resultSet.next()){
-            id++;
+        ResultSet resultSet = CrudUtil.execute("SELECT MAX(id) FROM members"); //Refining  the highest(maximum) value in the membership_id column from the members table
+        if(resultSet.next()){
+            int maxId = resultSet.getInt(1);
+            return maxId + 1;
+        }else{
+            return 1;
         }
-        return (id+2);
     }
 
     @Override

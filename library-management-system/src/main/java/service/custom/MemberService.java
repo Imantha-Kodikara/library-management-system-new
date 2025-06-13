@@ -15,4 +15,6 @@ public interface MemberService extends SuperService {
     MemberDTO searchById(Integer id) throws SQLException;
 
     Boolean update(MemberDTO member) throws SQLException;
+
+    Boolean deleteById(Integer id) throws SQLException;
 }

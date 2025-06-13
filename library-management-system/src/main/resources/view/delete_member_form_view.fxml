@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="379.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeleteMemberFormController">
+   <children>
+      <Label layoutX="330.0" layoutY="38.0" text="Delete Member" underline="true">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtFirstName" layoutX="242.0" layoutY="136.0" prefHeight="26.0" prefWidth="414.0" promptText="First Name" />
+      <JFXTextField fx:id="txtLastName" layoutX="242.0" layoutY="163.0" prefHeight="26.0" prefWidth="414.0" promptText="Last Name" />
+      <JFXTextField fx:id="txtAddress" layoutX="242.0" layoutY="191.0" prefHeight="26.0" prefWidth="414.0" promptText="Address" />
+      <JFXTextField fx:id="txtEmail" layoutX="242.0" layoutY="219.0" prefHeight="26.0" prefWidth="414.0" promptText="Email" />
+      <JFXTextField fx:id="txtContactNumber" layoutX="242.0" layoutY="246.0" prefHeight="26.0" prefWidth="192.0" promptText="Contact Number" />
+      <JFXTextField fx:id="txtNic" layoutX="242.0" layoutY="273.0" prefHeight="26.0" prefWidth="192.0" promptText="NIC" />
+      <DatePicker fx:id="dateOfMembership" layoutX="240.0" layoutY="302.0" promptText="Membership Date" />
+      <JFXButton fx:id="btnDeleteMember" layoutX="544.0" layoutY="328.0" onAction="#btnDeleteMemberOnClick" prefHeight="26.0" prefWidth="111.0" style="-fx-background-color: red;" text="Delete Member" textFill="WHITE" />
+      <TextField fx:id="txtMembershipId" layoutX="240.0" layoutY="96.0" prefHeight="26.0" prefWidth="278.0" promptText="Enter Membership ID" />
+      <JFXButton layoutX="544.0" layoutY="96.0" onAction="#btnSearchMemberOnClick" prefHeight="26.0" prefWidth="111.0" style="-fx-background-color: green;" text="Search Member" textFill="WHITE" />
+   </children>
+</AnchorPane>
