@@ -63,7 +63,7 @@ public class DashboardFormController {
 
     @FXML
     void btnSearchBookOnAction(ActionEvent event) {
-
+        loadWindow("/view/search_book_form_view.fxml");
     }
 
     @FXML
