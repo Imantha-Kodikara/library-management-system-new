@@ -8,6 +8,7 @@ import util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookRepositoryImpl implements BookRepository {
@@ -36,8 +37,23 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public List<BookEntity> getAll() {
-        return List.of();
+    public List<BookEntity> getAll() throws SQLException {
+        List<BookEntity> bookEntities = new ArrayList<>();
+
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM books");
+
+            while (resultSet.next()) {
+                BookEntity bookEntity = new BookEntity(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getInt(6)
+                );
+                bookEntities.add(bookEntity);
+            }
+            return bookEntities;
     }
 
     @Override

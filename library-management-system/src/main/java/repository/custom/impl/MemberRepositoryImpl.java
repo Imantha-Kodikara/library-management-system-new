@@ -6,6 +6,7 @@ import util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberRepositoryImpl implements MemberRepository {
@@ -48,8 +49,25 @@ public class MemberRepositoryImpl implements MemberRepository {
     }
 
     @Override
-    public List<MemberEntity> getAll() {
-        return null;
+    public List<MemberEntity> getAll() throws SQLException {
+        List<MemberEntity> memberEntities = new ArrayList<>();
+
+        ResultSet resultSet = CrudUtil.execute("SELECT * FROM members");
+
+            while (resultSet.next()){
+                MemberEntity memberEntity = new MemberEntity(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getString(7),
+                        resultSet.getDate(8).toLocalDate()
+                );
+                memberEntities.add(memberEntity);
+            }
+            return memberEntities;
     }
 
     @Override

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="379.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IssueBookFormController">
+   <children>
+      <Label layoutX="353.0" layoutY="26.0" text="Issue Book" underline="true">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="316.0" layoutY="329.0" onAction="#btnShowDetailsOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: green;" text="Show Details" textFill="WHITE" />
+      <JFXComboBox fx:id="cmbSelectMemberId" layoutX="144.0" layoutY="158.0" prefHeight="26.0" prefWidth="267.0" promptText="Select Member ID" />
+      <JFXComboBox fx:id="cmbSelectBookTitle" layoutX="144.0" layoutY="195.0" prefHeight="26.0" prefWidth="267.0" promptText="Select Book Title" />
+      <Line endX="-100.0" endY="-217.59999084472656" layoutX="547.0" layoutY="296.0" startX="-100.0" startY="65.5999755859375" />
+      <Label layoutX="469.0" layoutY="79.0" style="-fx-background-color: yellow;" text="Member Details">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="469.0" layoutY="98.0" text="First Name      " textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="115.0" text="Last Name       " textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="132.0" text="Address           " textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="149.0" text="email              " textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="165.0" text="NIC               " textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="181.0" text="Membership Date" textFill="#3a1ed9" />
+      <DatePicker fx:id="dateOfBookIssuing" layoutX="144.0" layoutY="238.0" promptText="Book Issuing Date" />
+      <Label layoutX="469.0" layoutY="222.0" style="-fx-background-color: yellow;" text="Book Details">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="469.0" layoutY="242.0" text="Book ID" textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="260.0" text="ISBN " textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="278.0" text="Category" textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="296.0" text="Available Copies" textFill="#3a1ed9" />
+      <Label layoutX="469.0" layoutY="199.0" text="Borrowed Books Count" textFill="#3a1ed9" />
+      <Label fx:id="lblFirstName" layoutX="619.0" layoutY="98.0" text="-" />
+      <Label fx:id="lblLastName" layoutX="619.0" layoutY="115.0" text="-" />
+      <Label fx:id="lblAddress" layoutX="619.0" layoutY="132.0" text="-" />
+      <Label fx:id="lblEmail" layoutX="619.0" layoutY="149.0" text="-" />
+      <Label fx:id="lblNic" layoutX="619.0" layoutY="165.0" text="-" />
+      <Label fx:id="lblMembershipDate" layoutX="619.0" layoutY="181.0" text="-" />
+      <Label fx:id="lblBookId" layoutX="619.0" layoutY="242.0" text="-" />
+      <Label fx:id="lblIsbn" layoutX="619.0" layoutY="260.0" text="-" />
+      <Label fx:id="lblCategory" layoutX="619.0" layoutY="278.0" text="-" />
+      <Label fx:id="lblAvailableCopies" layoutX="619.0" layoutY="296.0" text="-" />
+      <Label fx:id="lblBorowedBooksCount" layoutX="619.0" layoutY="199.0" text="-" />
+      <JFXButton fx:id="btnIssueBook" layoutX="708.0" layoutY="329.0" onAction="#btnIssueBookOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: blue;" text="Issue Book" textFill="WHITE" />
+   </children>
+</AnchorPane>

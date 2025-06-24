@@ -8,6 +8,6 @@ public interface CrudRepository <T, ID> extends SuperRepository{
     Boolean update(T entity) throws SQLException;
     Boolean deleteById(ID id) throws SQLException;
     T searchById(ID id) throws SQLException;
-    List <T> getAll();
+    List <T> getAll() throws SQLException;
     Integer getNextId() throws SQLException;
 }

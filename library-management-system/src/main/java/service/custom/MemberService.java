@@ -1,9 +1,11 @@
 package service.custom;
 
+import javafx.collections.ObservableList;
 import model.dto.MemberDTO;
 import service.SuperService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface MemberService extends SuperService {
     Boolean addMember(MemberDTO member) throws SQLException;
@@ -17,4 +19,8 @@ public interface MemberService extends SuperService {
     Boolean update(MemberDTO member) throws SQLException;
 
     Boolean deleteById(Integer id) throws SQLException;
+
+    List<MemberDTO> getAll() throws SQLException;
+
+    ObservableList<Integer> getMembersId() throws SQLException;
 }
