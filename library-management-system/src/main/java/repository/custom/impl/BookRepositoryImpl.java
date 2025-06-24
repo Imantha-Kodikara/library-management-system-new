@@ -26,13 +26,13 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public Boolean deleteById(Integer integer) throws SQLException {
-        return null;
+    public Boolean deleteById(Integer id) throws SQLException {
+        return CrudUtil.execute("DELETE FROM books WHERE id = ?", id);
     }
 
     @Override
-    public BookEntity searchById(Integer integer) throws SQLException {
-        return null;
+    public BookEntity searchById(Integer id) throws SQLException {
+       return null;
     }
 
     @Override

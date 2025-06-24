@@ -49,4 +49,9 @@ public class BookServiceImpl implements BookService {
         BookEntity entity = mapper.map(book, BookEntity.class);
        return bookRepository.update(entity);
     }
+
+    @Override
+    public Boolean deleteById(Integer id) throws SQLException {
+        return bookRepository.deleteById(id);
+    }
 }

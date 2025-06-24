@@ -32,52 +32,52 @@ public class DashboardFormController {
     private AnchorPane windowsPane;
 
     @FXML
-    void btnAddBookOnClick(ActionEvent event) {
+    void btnAddBookOnAction(ActionEvent event) {
         loadWindow("/view/add_book_form_view.fxml");
     }
 
     @FXML
-    void btnAddMemberOnClick(ActionEvent event) {
+    void btnAddMemberOnAction(ActionEvent event) {
         loadWindow("/view/add_member_form_view.fxml");
     }
 
     @FXML
-    void btnDeleteBookOnClick(ActionEvent event) {
-
+    void btnDeleteBookOnAction(ActionEvent event) {
+        loadWindow("/view/delete_book_form_view.fxml");
     }
 
     @FXML
-    void btnDeleteMemberOnClick(ActionEvent event) {
+    void btnDeleteMemberOnAction(ActionEvent event) {
         loadWindow("/view/delete_member_form_view.fxml");
     }
 
     @FXML
-    void btnIssueBookOnClick(ActionEvent event) {
+    void btnIssueBookOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnReturnBookOnClick(ActionEvent event) {
+    void btnReturnBookOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnSearchBookOnClick(ActionEvent event) {
+    void btnSearchBookOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnSearchMemberOnClick(ActionEvent event) {
+    void btnSearchMemberOnAction(ActionEvent event) {
         loadWindow("/view/search_member_form_view.fxml");
     }
 
     @FXML
-    void btnUpdateBookOnClick(ActionEvent event) {
+    void btnUpdateBookOnAction(ActionEvent event) {
         loadWindow("/view/update_book_form_view.fxml");
     }
 
     @FXML
-    void btnUpdateMemberOnClick(ActionEvent event) {
+    void btnUpdateMemberOnAction(ActionEvent event) {
         loadWindow("/view/update_member_form_view.fxml");
     }
 

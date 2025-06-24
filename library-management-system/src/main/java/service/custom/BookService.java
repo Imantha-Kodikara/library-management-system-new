@@ -12,5 +12,6 @@ public interface BookService extends SuperService {
     Boolean isBookRegistered(String isbn) throws SQLException;
     BookDTO searchByIsbn(String isbn) throws SQLException;
     Boolean update(BookDTO book) throws SQLException;
+    Boolean deleteById(Integer id) throws SQLException;
 
 }

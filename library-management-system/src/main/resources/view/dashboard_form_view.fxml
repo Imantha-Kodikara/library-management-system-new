@@ -6,7 +6,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="611.0" prefWidth="1026.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddedf" height="139.0" layoutX="244.0" layoutY="63.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="887.0" />
@@ -23,22 +22,22 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <JFXButton layoutX="62.0" layoutY="111.0" onAction="#btnAddMemberOnClick" text="Add member" textFill="#9c9c9c">
+      <JFXButton layoutX="62.0" layoutY="111.0" onAction="#btnAddMemberOnAction" text="Add member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="50.0" layoutY="137.0" onAction="#btnUpdateMemberOnClick" text="Update member" textFill="#9c9c9c">
+      <JFXButton layoutX="50.0" layoutY="137.0" onAction="#btnUpdateMemberOnAction" text="Update member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="53.0" layoutY="163.0" onAction="#btnDeleteMemberOnClick" text="Delete member" textFill="#9c9c9c">
+      <JFXButton layoutX="53.0" layoutY="163.0" onAction="#btnDeleteMemberOnAction" text="Delete member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="52.0" layoutY="188.0" onAction="#btnSearchMemberOnClick" text="Search member" textFill="#9c9c9c">
+      <JFXButton layoutX="52.0" layoutY="188.0" onAction="#btnSearchMemberOnAction" text="Search member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -49,32 +48,32 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <JFXButton layoutX="74.0" layoutY="274.0" onAction="#btnAddBookOnClick" text="Add Book" textFill="#9c9c9c">
+      <JFXButton layoutX="74.0" layoutY="274.0" onAction="#btnAddBookOnAction" text="Add Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="61.0" layoutY="300.0" onAction="#btnUpdateBookOnClick" text="Update Book" textFill="#9c9c9c">
+      <JFXButton layoutX="61.0" layoutY="300.0" onAction="#btnUpdateBookOnAction" text="Update Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="66.0" layoutY="327.0" onAction="#btnDeleteBookOnClick" text="Delete Book" textFill="#9c9c9c">
+      <JFXButton layoutX="66.0" layoutY="327.0" onAction="#btnDeleteBookOnAction" text="Delete Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="65.0" layoutY="354.0" onAction="#btnSearchBookOnClick" text="Search Book" textFill="#9c9c9c">
+      <JFXButton layoutX="65.0" layoutY="354.0" onAction="#btnSearchBookOnAction" text="Search Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="71.0" layoutY="379.0" onAction="#btnIssueBookOnClick" text="Issue Book" textFill="#9c9c9c">
+      <JFXButton layoutX="71.0" layoutY="379.0" onAction="#btnIssueBookOnAction" text="Issue Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="63.0" layoutY="404.0" onAction="#btnReturnBookOnClick" text="Return Book" textFill="#9c9c9c">
+      <JFXButton layoutX="63.0" layoutY="404.0" onAction="#btnReturnBookOnAction" text="Return Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
