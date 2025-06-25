@@ -8,4 +8,5 @@ import java.sql.SQLException;
 public interface BookRepository extends CrudRepository<BookEntity, Integer> {
     Boolean isBookRegistered(String isbn) throws SQLException;
     BookEntity searchByIsbn(String isbn) throws SQLException;
+    Boolean updateBookAvailableCopies(Integer bookId) throws SQLException;
 }

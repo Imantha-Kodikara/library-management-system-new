@@ -7,6 +7,7 @@ import util.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MemberRepositoryImpl implements MemberRepository {
@@ -86,4 +87,13 @@ public class MemberRepositoryImpl implements MemberRepository {
         ResultSet resultSet = CrudUtil.execute("SELECT * FROM members WHERE nic = ?", nic); //If found already registered member NIC, return true
         return resultSet.next();
     }
+
+    public Integer findBorrowedBooksCount(Integer id) throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(*) AS currently_issued FROM issued_books WHERE member_id = ? AND status = 'Issued'", id);
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }
+        return 0;
+    }
+
 }

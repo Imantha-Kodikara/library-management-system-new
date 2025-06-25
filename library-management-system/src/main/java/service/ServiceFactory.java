@@ -1,6 +1,7 @@
 package service;
 
 import service.custom.impl.BookServiceImpl;
+import service.custom.impl.IssuedBooksServiceImpl;
 import service.custom.impl.MemberServiceImpl;
 import util.ServiceType;
 
@@ -17,6 +18,7 @@ public class ServiceFactory {
         switch (type){
             case MEMBER : return (T) new MemberServiceImpl();
             case BOOK : return (T) new BookServiceImpl();
+            case ISSUEDBOOK : return (T) new IssuedBooksServiceImpl();
         }
         return null;
     }

@@ -7,15 +7,18 @@ import model.entity.BookEntity;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
 import repository.custom.BookRepository;
+import repository.custom.IssuedBooksRepository;
 import service.custom.BookService;
 import util.RepositoryType;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BookServiceImpl implements BookService {
     BookRepository bookRepository = DaoFactory.getInstance().getRepositoryType(RepositoryType.BOOK);
+    IssuedBooksRepository issuedBooksRepository = DaoFactory.getInstance().getRepositoryType(RepositoryType.ISSUEDBOOK);
     @Override
     public Boolean addBook(BookDTO book) throws SQLException {
         ModelMapper mapper = new ModelMapper();
@@ -81,4 +84,16 @@ public class BookServiceImpl implements BookService {
         }
         return bookTitles;
     }
+
+    public BookDTO findBookByTitle(String bookTitle) throws SQLException {
+        List<BookDTO> bookDTOList = getAll();
+
+        for(BookDTO book : bookDTOList){
+            if(book.getTitle().equalsIgnoreCase(bookTitle)){
+                return book;
+            }
+        }
+        return null;
+    }
+
 }

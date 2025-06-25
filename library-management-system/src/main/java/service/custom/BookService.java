@@ -6,6 +6,7 @@ import model.dto.MemberDTO;
 import service.SuperService;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 public interface BookService extends SuperService {
@@ -16,6 +17,8 @@ public interface BookService extends SuperService {
     Boolean update(BookDTO book) throws SQLException;
     Boolean deleteById(Integer id) throws SQLException;
     List<BookDTO> getAll() throws SQLException;
-    public ObservableList<String> getAllBookTitles() throws SQLException;
+    ObservableList<String> getAllBookTitles() throws SQLException;
+    BookDTO findBookByTitle(String bookTitle) throws SQLException;
+
 
 }

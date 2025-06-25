@@ -81,4 +81,8 @@ public class MemberServiceImpl implements MemberService {
         }
         return observableList;
     }
+
+    public Integer findBorrowedBooksCount(Integer id) throws SQLException {
+        return memberRepository.findBorrowedBooksCount(id);
+    }
 }

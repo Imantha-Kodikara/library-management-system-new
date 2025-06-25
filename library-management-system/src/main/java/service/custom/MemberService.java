@@ -23,4 +23,6 @@ public interface MemberService extends SuperService {
     List<MemberDTO> getAll() throws SQLException;
 
     ObservableList<Integer> getMembersId() throws SQLException;
+
+    Integer findBorrowedBooksCount(Integer ID) throws SQLException;
 }

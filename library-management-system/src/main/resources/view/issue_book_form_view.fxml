@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="379.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IssueBookFormController">
    <children>
       <Label layoutX="353.0" layoutY="26.0" text="Issue Book" underline="true">
@@ -54,5 +53,7 @@
       <Label fx:id="lblAvailableCopies" layoutX="619.0" layoutY="296.0" text="-" />
       <Label fx:id="lblBorowedBooksCount" layoutX="619.0" layoutY="199.0" text="-" />
       <JFXButton fx:id="btnIssueBook" layoutX="708.0" layoutY="329.0" onAction="#btnIssueBookOnAction" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: blue;" text="Issue Book" textFill="WHITE" />
+      <Label layoutX="469.0" layoutY="313.0" text="Author" textFill="#3a1ed9" />
+      <Label fx:id="lblAuthor" layoutX="619.0" layoutY="313.0" text="-" />
    </children>
 </AnchorPane>
