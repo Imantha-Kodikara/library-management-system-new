@@ -52,14 +52,11 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnIssueBookOnAction(ActionEvent event) {
-        loadWindow("/view/issue_book_form_view.fxml");
-    }
+    void btnIssueBookOnAction(ActionEvent event) {loadWindow("/view/issue_book_form_view.fxml");}
 
     @FXML
     void btnReturnBookOnAction(ActionEvent event) {
-
-    }
+        loadWindow("/view/return_book_form_view.fxml");}
 
     @FXML
     void btnSearchBookOnAction(ActionEvent event) {
