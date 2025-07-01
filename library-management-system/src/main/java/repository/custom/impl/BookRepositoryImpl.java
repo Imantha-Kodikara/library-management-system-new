@@ -90,7 +90,12 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public Boolean updateBookAvailableCopies(Integer bookId) throws SQLException {
+    public Boolean reduceBookAvailableCopies(Integer bookId) throws SQLException {
         return CrudUtil.execute("UPDATE books SET no_of_copies = no_of_copies - 1 WHERE id = ? AND no_of_copies > 0",bookId);
+    }
+
+    @Override
+    public Boolean IncreaseBookAvailableCopies(Integer bookId) throws SQLException {
+        return CrudUtil.execute("UPDATE books SET no_of_copies = no_of_copies + 1 WHERE id = ? AND no_of_copies > 0",bookId);
     }
 }

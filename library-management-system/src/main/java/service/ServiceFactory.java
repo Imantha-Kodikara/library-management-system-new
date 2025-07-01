@@ -3,6 +3,7 @@ package service;
 import service.custom.impl.BookServiceImpl;
 import service.custom.impl.IssuedBooksServiceImpl;
 import service.custom.impl.MemberServiceImpl;
+import service.custom.impl.ReturnBookServiceImpl;
 import util.ServiceType;
 
 public class ServiceFactory {
@@ -19,6 +20,7 @@ public class ServiceFactory {
             case MEMBER : return (T) new MemberServiceImpl();
             case BOOK : return (T) new BookServiceImpl();
             case ISSUEDBOOK : return (T) new IssuedBooksServiceImpl();
+            case RETURNBOOK: return (T) new ReturnBookServiceImpl();
         }
         return null;
     }

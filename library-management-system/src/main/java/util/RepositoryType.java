@@ -1,5 +1,5 @@
 package util;
 
 public enum RepositoryType {
-    MEMBER, BOOK, ISSUEDBOOK
+    MEMBER, BOOK, ISSUEDBOOK, RETURNBOOK
 }
