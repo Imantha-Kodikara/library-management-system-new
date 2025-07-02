@@ -96,4 +96,14 @@ public class MemberRepositoryImpl implements MemberRepository {
         return 0;
     }
 
+    @Override
+    public Integer getTotalMembers() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(*) FROM members");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }else{
+            return 0;
+        }
+    }
+
 }

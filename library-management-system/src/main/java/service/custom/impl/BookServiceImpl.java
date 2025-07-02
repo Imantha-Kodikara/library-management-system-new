@@ -96,4 +96,8 @@ public class BookServiceImpl implements BookService {
         return null;
     }
 
+    public Integer getTotalBooks() throws SQLException {
+        return bookRepository.getTotalBooks();
+    }
+
 }

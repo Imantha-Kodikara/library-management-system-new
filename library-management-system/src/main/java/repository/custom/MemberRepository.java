@@ -8,5 +8,6 @@ import java.sql.SQLException;
 public interface MemberRepository extends CrudRepository<MemberEntity, Integer> {
     Boolean isMemberRegistered(String nic) throws SQLException;
     Integer findBorrowedBooksCount(Integer id) throws SQLException;
+    Integer getTotalMembers() throws SQLException;
 
 }

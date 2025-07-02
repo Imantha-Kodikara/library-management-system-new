@@ -19,6 +19,7 @@ public interface BookService extends SuperService {
     List<BookDTO> getAll() throws SQLException;
     ObservableList<String> getAllBookTitles() throws SQLException;
     BookDTO findBookByTitle(String bookTitle) throws SQLException;
+    Integer getTotalBooks() throws SQLException;
 
 
 }

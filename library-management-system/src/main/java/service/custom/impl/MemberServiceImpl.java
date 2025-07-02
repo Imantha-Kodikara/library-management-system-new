@@ -85,4 +85,9 @@ public class MemberServiceImpl implements MemberService {
     public Integer findBorrowedBooksCount(Integer id) throws SQLException {
         return memberRepository.findBorrowedBooksCount(id);
     }
+
+    @Override
+    public Integer getTotalMembers() throws SQLException {
+        return memberRepository.getTotalMembers();
+    }
 }

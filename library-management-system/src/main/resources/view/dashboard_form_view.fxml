@@ -10,7 +10,7 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddedf" height="139.0" layoutX="244.0" layoutY="63.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="887.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e3346" height="611.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="244.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e3346" height="84.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1131.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1e3346" height="68.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1131.0" />
       <Label layoutX="32.0" layoutY="11.0" text="Dashboard" textFill="WHITE">
          <font>
             <Font name="Impact" size="40.0" />
@@ -150,5 +150,10 @@
          </font>
       </Label>
       <AnchorPane fx:id="windowsPane" layoutX="262.0" layoutY="214.0" prefHeight="379.0" prefWidth="858.0" />
+      <JFXButton layoutX="958.0" layoutY="62.0" onAction="#btnRefreshDashboardOnAction" text="Refresh Dashboard" textFill="#9c9c9c">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

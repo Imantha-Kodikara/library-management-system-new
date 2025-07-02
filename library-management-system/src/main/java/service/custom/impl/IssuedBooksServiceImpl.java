@@ -87,4 +87,14 @@ public class IssuedBooksServiceImpl implements IssuedBooksService {
         }
         return null;
     }
+
+    @Override
+    public Integer getTotalIssuedBooks() throws SQLException {
+        return issuedBooksRepository.getTotalIssuedBooks();
+    }
+
+    @Override
+    public Integer getTotalFine() throws SQLException {
+        return issuedBooksRepository.getTotalFine();
+    }
 }

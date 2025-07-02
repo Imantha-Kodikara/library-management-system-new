@@ -126,4 +126,24 @@ public class IssuedBooksRepositoryImpl implements IssuedBooksRepository {
         }
         return issuedBooksIds;
     }
+
+    @Override
+    public Integer getTotalIssuedBooks() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT COUNT(*) FROM issued_books WHERE status = 'issued'");
+        if (resultSet.next()){
+            return resultSet.getInt(1);
+        }else{
+            return 0;
+        }
+    }
+
+    @Override
+    public Integer getTotalFine() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT SUM(fine) FROM issued_books");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }else{
+            return 0;
+        }
+    }
 }

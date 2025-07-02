@@ -12,5 +12,7 @@ public interface IssuedBooksRepository extends CrudRepository<IssuedBookEntity, 
     Boolean isIssued(IssuedBookEntity issuedBook) throws SQLException;
     ObservableList<Integer> getIssuedBooksMembersId() throws SQLException;
     List<Integer> getIssuedBooksIds(Integer memberId) throws SQLException;
+    Integer getTotalIssuedBooks() throws SQLException;
+    Integer getTotalFine() throws SQLException;
 
 }

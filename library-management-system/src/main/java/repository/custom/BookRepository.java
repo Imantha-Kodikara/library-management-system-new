@@ -10,4 +10,5 @@ public interface BookRepository extends CrudRepository<BookEntity, Integer> {
     BookEntity searchByIsbn(String isbn) throws SQLException;
     Boolean reduceBookAvailableCopies(Integer bookId) throws SQLException;
     Boolean IncreaseBookAvailableCopies(Integer bookId) throws SQLException;
+    Integer getTotalBooks() throws SQLException;
 }

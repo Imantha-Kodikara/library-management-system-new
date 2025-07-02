@@ -14,4 +14,6 @@ public interface IssuedBooksService extends SuperService {
     ObservableList<String> getIssuedBooksTitles(Integer memberId) throws SQLException;
     List<IssuedBookDTO> getAll() throws SQLException;
     IssuedBookDTO getIssuedBook(Integer memberId, String bookTitle) throws SQLException;
+    Integer getTotalIssuedBooks() throws SQLException;
+    Integer getTotalFine() throws SQLException;
 }

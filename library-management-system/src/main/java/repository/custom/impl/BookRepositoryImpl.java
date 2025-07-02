@@ -98,4 +98,14 @@ public class BookRepositoryImpl implements BookRepository {
     public Boolean IncreaseBookAvailableCopies(Integer bookId) throws SQLException {
         return CrudUtil.execute("UPDATE books SET no_of_copies = no_of_copies + 1 WHERE id = ? AND no_of_copies > 0",bookId);
     }
+
+    @Override
+    public Integer getTotalBooks() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT SUM(no_of_copies) FROM books");
+        if(resultSet.next()){
+            return resultSet.getInt(1);
+        }else{
+            return 0;
+        }
+    }
 }
