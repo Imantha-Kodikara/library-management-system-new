@@ -1,11 +1,16 @@
 package controller;
 
+import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import service.ServiceFactory;
 import service.custom.BookService;
 import service.custom.IssuedBooksService;
@@ -13,6 +18,7 @@ import service.custom.MemberService;
 import util.ServiceType;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -132,5 +138,30 @@ public class DashboardFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    //--------------------------------------Reports Generation part---------------------------------------------------
+
+    public void btnBooksReportOnAction(ActionEvent actionEvent) {
+        try {
+            InputStream reportStream = getClass().getResourceAsStream("/report/books-report.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load(reportStream);
+            //JasperDesign design = JRXmlLoader.load("src/main/resources/report/books-report.jrxml"); //Get prepared report and store to the variable
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign); // compile the report. After compiling it returned jasper report
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "books_report.pdf"); //Export report to pdf file
+            JasperViewer.viewReport(jasperPrint, false); //View report after print
+        } catch (JRException  | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void btnIssuedBooksOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnMembersReportOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnFinesReportOnAction(ActionEvent actionEvent) {
     }
 }

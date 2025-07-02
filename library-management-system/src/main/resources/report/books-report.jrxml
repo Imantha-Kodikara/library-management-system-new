@@ -1,0 +1,101 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="books-report" language="java" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94ae79fb-2998-48bb-9c87-6c1f1137f8f8">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<query language="SQL"><![CDATA[SELECT * FROM books;]]></query>
+	<field name="book_title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="book_title"/>
+		<property name="com.jaspersoft.studio.field.label" value="book_title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="author" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="author"/>
+		<property name="com.jaspersoft.studio.field.label" value="author"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="category"/>
+		<property name="com.jaspersoft.studio.field.label" value="category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="no_of_copies" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="no_of_copies"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_of_copies"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="72" splitType="Stretch">
+		<element kind="staticText" uuid="e5786670-efd7-4358-92db-f00edd1927b6" x="241" y="8" width="320" height="60" fontSize="36.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Books Report]]></text>
+		</element>
+		<element kind="textField" uuid="c7178d1c-7057-408f-954e-89f4047442d8" x="630" y="10" width="140" height="30" fontSize="14.0" pattern="MMMMM dd, yyyy">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="07c0317d-dc98-4c1d-8afc-2403b54f3dad" x="678" y="33" width="170" height="30" fontSize="13.0" pattern="HH:mm">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</title>
+	<pageHeader height="50" splitType="Stretch">
+		<element kind="staticText" uuid="b782cf55-36c2-4167-b3e4-565175521c2c" x="251" y="0" width="300" height="30" fontSize="19.0" bold="true" italic="true" hTextAlign="Center">
+			<text><![CDATA[Library Management System]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="30" splitType="Stretch">
+		<element kind="staticText" uuid="e7c1498a-4452-49a2-8a66-8a60f28878a0" x="49" y="0" width="100" height="30">
+			<text><![CDATA[book_title]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b34423f-751c-4233-8384-d5f3ed869378"/>
+		</element>
+		<element kind="staticText" uuid="fa7c3f17-1257-4bad-ad5b-9d069bec1383" x="280" y="0" width="100" height="30">
+			<text><![CDATA[author]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="233982ba-207b-4414-802e-e44cf10c4d0c"/>
+		</element>
+		<element kind="staticText" uuid="2ef4746b-9b65-425e-8577-982d3bca7793" x="439" y="0" width="100" height="30">
+			<text><![CDATA[isbn]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44faa867-3dfd-4896-bd6f-094c473ae44e"/>
+		</element>
+		<element kind="staticText" uuid="f5a9d532-6aa4-4465-9343-6985f5dff089" x="559" y="0" width="100" height="30">
+			<text><![CDATA[category]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7550ccf-98a5-4b9b-b955-f9076f47b132"/>
+		</element>
+		<element kind="staticText" uuid="bce6c9c6-96cc-4064-ba9b-59fe3ec1e353" x="669" y="0" width="100" height="30">
+			<text><![CDATA[no_of_copies]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62d2c2fe-2d89-4e2f-9733-c56b475caf93"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<element kind="textField" uuid="831d90d4-27ff-4fa6-bcde-8c5d1ec8bb71" x="49" y="7" width="100" height="30">
+				<expression><![CDATA[$F{book_title}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b34423f-751c-4233-8384-d5f3ed869378"/>
+			</element>
+			<element kind="textField" uuid="3e0cd94b-0c5a-4b11-a476-1226dd4006b7" x="280" y="7" width="100" height="30">
+				<expression><![CDATA[$F{author}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="233982ba-207b-4414-802e-e44cf10c4d0c"/>
+			</element>
+			<element kind="textField" uuid="b5cca888-a4bc-4ae6-96aa-9613d240becb" x="439" y="7" width="100" height="30">
+				<expression><![CDATA[$F{isbn}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44faa867-3dfd-4896-bd6f-094c473ae44e"/>
+			</element>
+			<element kind="textField" uuid="abbafaea-7729-4713-9a0e-3d849296ace2" x="559" y="7" width="100" height="30">
+				<expression><![CDATA[$F{category}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7550ccf-98a5-4b9b-b955-f9076f47b132"/>
+			</element>
+			<element kind="textField" uuid="10bb1d20-146b-4eb5-85b8-0d3f66c04d8f" x="669" y="7" width="100" height="30">
+				<expression><![CDATA[$F{no_of_copies}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62d2c2fe-2d89-4e2f-9733-c56b475caf93"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch">
+		<element kind="staticText" uuid="8df13443-82b7-47f8-9497-9214cf67ecb4" x="618" y="12" width="188" height="30">
+			<text><![CDATA[System Generated Report]]></text>
+		</element>
+	</pageFooter>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

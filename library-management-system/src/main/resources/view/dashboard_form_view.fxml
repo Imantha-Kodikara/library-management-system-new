@@ -155,5 +155,25 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
+      <JFXButton layoutX="64.0" layoutY="475.0" onAction="#btnBooksReportOnAction" text="Books Report" textFill="#9c9c9c">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="38.0" layoutY="496.0" onAction="#btnIssuedBooksOnAction" text="Issued Books Report" textFill="#9c9c9c">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="51.0" layoutY="520.0" onAction="#btnMembersReportOnAction" text="Members Report" textFill="#9c9c9c">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="63.0" layoutY="545.0" onAction="#btnFinesReportOnAction" text="Fines Report" textFill="#9c9c9c">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
