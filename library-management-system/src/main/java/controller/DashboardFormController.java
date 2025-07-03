@@ -157,6 +157,17 @@ public class DashboardFormController implements Initializable {
     }
 
     public void btnIssuedBooksOnAction(ActionEvent actionEvent) {
+        try {
+            InputStream reportStream = getClass().getResourceAsStream("/report/issuedbooks-report.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load(reportStream);
+            //JasperDesign design = JRXmlLoader.load("src/main/resources/report/books-report.jrxml"); //Get prepared report and store to the variable
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign); // compile the report. After compiling it returned jasper report
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "issued_books_report.pdf"); //Export report to pdf file
+            JasperViewer.viewReport(jasperPrint, false); //View report after print
+        } catch (JRException  | SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void btnMembersReportOnAction(ActionEvent actionEvent) {
