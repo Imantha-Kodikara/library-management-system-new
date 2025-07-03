@@ -1,12 +1,15 @@
 package controller;
 
 import db.DBConnection;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
@@ -21,6 +24,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class DashboardFormController implements Initializable {
@@ -30,6 +36,12 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     private Label lblFineCollected;
+
+    @FXML
+    private Label lblDate;
+
+    @FXML
+    private Label lblTime;
 
     @FXML
     private Label lblIssuedBooks;
@@ -49,6 +61,7 @@ public class DashboardFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         refreshDashboard();
+        loadDateAndTime();
     }
 
     @FXML
@@ -101,6 +114,7 @@ public class DashboardFormController implements Initializable {
     @FXML
     void btnRefreshDashboardOnAction(ActionEvent actionEvent) {
         refreshDashboard();
+        loadDateAndTime();
     }
 
 
@@ -171,8 +185,28 @@ public class DashboardFormController implements Initializable {
     }
 
     public void btnMembersReportOnAction(ActionEvent actionEvent) {
+        try {
+            InputStream reportStream = getClass().getResourceAsStream("/report/members-report.jrxml");
+            JasperDesign jasperDesign = JRXmlLoader.load(reportStream);
+            //JasperDesign design = JRXmlLoader.load("src/main/resources/report/books-report.jrxml"); //Get prepared report and store to the variable
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign); // compile the report. After compiling it returned jasper report
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "members_report.pdf"); //Export report to pdf file
+            JasperViewer.viewReport(jasperPrint, false); //View report after print
+        } catch (JRException  | SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void btnFinesReportOnAction(ActionEvent actionEvent) {
+    private void loadDateAndTime(){
+        LocalDate today = LocalDate.now();
+        lblDate.setText(today.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->{
+            LocalTime currentTime = LocalTime.now();
+            lblTime.setText(currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Timeline.INDEFINITE);
+        clock.play();
     }
 }
