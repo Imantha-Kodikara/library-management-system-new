@@ -22,22 +22,22 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <JFXButton layoutX="62.0" layoutY="111.0" onAction="#btnAddMemberOnAction" text="Add member" textFill="#9c9c9c">
+      <JFXButton layoutX="62.0" layoutY="111.0" onAction="#btnAddMemberOnAction" stylesheets="@../css/style.css" text="Add member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="50.0" layoutY="137.0" onAction="#btnUpdateMemberOnAction" text="Update member" textFill="#9c9c9c">
+      <JFXButton layoutX="50.0" layoutY="137.0" onAction="#btnUpdateMemberOnAction" stylesheets="@../css/style.css" text="Update member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="53.0" layoutY="163.0" onAction="#btnDeleteMemberOnAction" text="Delete member" textFill="#9c9c9c">
+      <JFXButton layoutX="53.0" layoutY="163.0" onAction="#btnDeleteMemberOnAction" stylesheets="@../css/style.css" text="Delete member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="52.0" layoutY="188.0" onAction="#btnSearchMemberOnAction" text="Search member" textFill="#9c9c9c">
+      <JFXButton layoutX="52.0" layoutY="188.0" onAction="#btnSearchMemberOnAction" stylesheets="@../css/style.css" text="Search member" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -48,32 +48,32 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <JFXButton layoutX="74.0" layoutY="274.0" onAction="#btnAddBookOnAction" text="Add Book" textFill="#9c9c9c">
+      <JFXButton layoutX="74.0" layoutY="274.0" onAction="#btnAddBookOnAction" stylesheets="@../css/style.css" text="Add Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="61.0" layoutY="300.0" onAction="#btnUpdateBookOnAction" text="Update Book" textFill="#9c9c9c">
+      <JFXButton layoutX="61.0" layoutY="300.0" onAction="#btnUpdateBookOnAction" stylesheets="@../css/style.css" text="Update Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="66.0" layoutY="327.0" onAction="#btnDeleteBookOnAction" text="Delete Book" textFill="#9c9c9c">
+      <JFXButton layoutX="66.0" layoutY="327.0" onAction="#btnDeleteBookOnAction" stylesheets="@../css/style.css" text="Delete Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="65.0" layoutY="354.0" onAction="#btnSearchBookOnAction" text="Search Book" textFill="#9c9c9c">
+      <JFXButton layoutX="65.0" layoutY="354.0" onAction="#btnSearchBookOnAction" stylesheets="@../css/style.css" text="Search Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="71.0" layoutY="379.0" onAction="#btnIssueBookOnAction" text="Issue Book" textFill="#9c9c9c">
+      <JFXButton layoutX="71.0" layoutY="379.0" onAction="#btnIssueBookOnAction" stylesheets="@../css/style.css" text="Issue Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="63.0" layoutY="404.0" onAction="#btnReturnBookOnAction" text="Return Book" textFill="#9c9c9c">
+      <JFXButton layoutX="63.0" layoutY="404.0" onAction="#btnReturnBookOnAction" stylesheets="@../css/style.css" text="Return Book" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -140,23 +140,23 @@
          </font>
       </Label>
       <AnchorPane fx:id="windowsPane" layoutX="262.0" layoutY="214.0" prefHeight="379.0" prefWidth="858.0" />
-      <JFXButton layoutX="64.0" layoutY="475.0" onAction="#btnBooksReportOnAction" text="Books Report" textFill="#9c9c9c">
+      <JFXButton layoutX="64.0" layoutY="475.0" onAction="#btnBooksReportOnAction" stylesheets="@../css/style.css" text="Books Report" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="38.0" layoutY="496.0" onAction="#btnIssuedBooksOnAction" text="Issued Books Report" textFill="#9c9c9c">
+      <JFXButton layoutX="38.0" layoutY="496.0" onAction="#btnIssuedBooksOnAction" stylesheets="@../css/style.css" text="Issued Books Report" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="51.0" layoutY="520.0" onAction="#btnMembersReportOnAction" text="Members Report" textFill="#9c9c9c">
+      <JFXButton layoutX="51.0" layoutY="520.0" onAction="#btnMembersReportOnAction" stylesheets="@../css/style.css" text="Members Report" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="37.0" layoutX="21.0" layoutY="562.0" opacity="0.07" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <JFXButton layoutX="39.0" layoutY="562.0" onAction="#btnRefreshDashboardOnAction" text="Refresh Dashboard" textFill="#9c9c9c">
+      <JFXButton layoutX="39.0" layoutY="562.0" onAction="#btnRefreshDashboardOnAction" stylesheets="@../css/style.css" text="Refresh Dashboard" textFill="#9c9c9c">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
