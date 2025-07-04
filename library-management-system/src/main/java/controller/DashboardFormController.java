@@ -128,6 +128,7 @@ public class DashboardFormController implements Initializable {
         }
     }
 
+    //---------------------------------------------------------------------------------------------------
     BookService bookService = ServiceFactory.getInstance().getServiceType(ServiceType.BOOK);
     IssuedBooksService issuedBooksService = ServiceFactory.getInstance().getServiceType(ServiceType.ISSUEDBOOK);
     MemberService memberService = ServiceFactory.getInstance().getServiceType(ServiceType.MEMBER);

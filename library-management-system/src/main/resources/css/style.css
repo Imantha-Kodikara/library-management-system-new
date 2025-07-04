@@ -1,6 +1,6 @@
 .button:hover {
-    -fx-background-color: #3498db; /* Green on hover */
-    -fx-text-fill: white;          /* White text on hover */
-    -fx-scale-x: 1.05;             /* Slight zoom on hover */
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
 }
